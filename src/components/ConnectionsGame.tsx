@@ -41,7 +41,7 @@ export function ConnectionsGame({ initialState }: ConnectionsGameProps) {
           {state.foundGroups.map((group) => (
             <FoundGroupBar
               key={group.title}
-              title={group.title}
+              title={group.title.toUpperCase()}
               color={group.color}
               words={group.tiles.map((tile) => tile.word.toUpperCase())}
             />

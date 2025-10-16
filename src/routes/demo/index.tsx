@@ -42,6 +42,17 @@ const initialState: GameState = {
       color: 'gray-200',
       title: 'snakes',
     },
+    {
+      tiles: [
+        { word: 'funny', selected: false },
+        { word: 'smart', selected: false },
+        { word: 'goated!', selected: false },
+        { word: 'esoteric', selected: false },
+      ],
+      found: false,
+      color: 'gray-200',
+      title: 'rach',
+    },
   ],
   foundGroups: [],
 }

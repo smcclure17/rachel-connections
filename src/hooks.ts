@@ -1,8 +1,7 @@
-import { useReducer, useState } from 'react'
+import { useReducer, useState, useMemo } from 'react'
 import { gameReducer } from '@/reducer'
-import { GameState, Group } from '@/types'
-
-const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+import { GameState, Group, WordTile } from '@/types'
+import { shuffle, wait } from './utils'
 
 export function useConnectionsGame(initialState: GameState) {
   const [state, dispatch] = useReducer(gameReducer, initialState)
@@ -10,7 +9,21 @@ export function useConnectionsGame(initialState: GameState) {
   const [isSelecting, setIsSelecting] = useState(false)
   const [pendingFoundGroup, setPendingFoundGroup] = useState<Group | null>(null)
 
-  const allWords = state.groups.flatMap((group) => group.tiles)
+  // Shuffle all tiles once for display, but keep original state for game logic
+  const shuffledTiles = useMemo(() => {
+    const allTiles = initialState.groups.flatMap((group) => group.tiles)
+    return shuffle(allTiles)
+  }, [])
+
+  // Map shuffled tiles to current state (so selections update)
+  const allWords = useMemo<WordTile[]>(() => {
+    const currentTiles = state.groups.flatMap((group) => group.tiles)
+    const tileMap = new Map(currentTiles.map((tile) => [tile.word, tile]))
+    return shuffledTiles
+      .map((tile) => tileMap.get(tile.word))
+      .filter((tile): tile is WordTile => tile !== undefined)
+  }, [state.groups, shuffledTiles])
+
   const numSelectedTiles = allWords.filter((tile) => tile.selected).length
 
   const handleSubmit = async () => {
