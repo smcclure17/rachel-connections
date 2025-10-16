@@ -22,36 +22,36 @@ const initialState: GameState = {
     },
     {
       tiles: [
-        { word: 'bark', selected: false },
-        { word: 'grrr', selected: false },
-        { word: 'wag', selected: false },
-        { word: 'bite!', selected: false },
+        { word: 'MFA', selected: false },
+        { word: 'Wusong', selected: false },
+        { word: 'Clay', selected: false },
+        { word: 'stalking', selected: false },
       ],
       found: false,
       color: 'yellow-200',
-      title: 'dogs',
+      title: 'iconic dates',
     },
     {
       tiles: [
-        { word: 'hssss', selected: false },
-        { word: 'wiggle', selected: false },
-        { word: 'venom!', selected: false },
-        { word: 'slither', selected: false },
+        { word: 'kitchen', selected: false },
+        { word: 'stairs', selected: false },
+        { word: 'couch', selected: false },
+        { word: 'almost park', selected: false },
       ],
       found: false,
       color: 'gray-200',
-      title: 'snakes',
+      title: 'places we have banged',
     },
     {
       tiles: [
-        { word: 'funny', selected: false },
-        { word: 'smart', selected: false },
-        { word: 'goated!', selected: false },
-        { word: 'esoteric', selected: false },
+        { word: 'I', selected: false },
+        { word: 'Love', selected: false },
+        { word: 'You', selected: false },
+        { word: 'Rachel', selected: false },
       ],
       found: false,
-      color: 'gray-200',
-      title: 'rach',
+      color: 'red-400',
+      title: 'how i feel about you',
     },
   ],
   foundGroups: [],
@@ -59,7 +59,7 @@ const initialState: GameState = {
 
 function IndexPage() {
   return (
-    <div className="max-w-5xl mx-auto mt-10">
+    <div className="max-w-5xl mx-auto mt-24">
       <ConnectionsGame initialState={initialState} />
     </div>
   )

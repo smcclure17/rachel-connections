@@ -3,6 +3,11 @@ import { GameState } from '@/types'
 import { TileButton } from './ui/TileButton'
 import { ControlButton } from './ui/ControlButton'
 import { FoundGroupBar } from './ui/FoundGroupBar'
+import { Modal } from './ui/Modal'
+import { Toast } from './ui/Toast'
+import { useEffect, useState } from 'react'
+import { wait } from '@/utils'
+import { Image } from '@unpic/react'
 
 export interface ConnectionsGameProps {
   initialState: GameState
@@ -16,10 +21,18 @@ export function ConnectionsGame({ initialState }: ConnectionsGameProps) {
     incorrectGuess,
     isSelecting,
     pendingFoundGroup,
+    gameWon,
+    toastMessage,
+    setToastMessage,
     handleSubmit,
     handleToggleTile,
     handleClearSelection,
   } = useConnectionsGame(initialState)
+
+  const [showModal, setShowModal] = useState(false)
+  useEffect(() => {
+    wait(1000).then(() => setShowModal(gameWon))
+  }, [gameWon])
 
   // When rearranging, sort so selected tiles come first
   const displayWords = pendingFoundGroup
@@ -67,16 +80,36 @@ export function ConnectionsGame({ initialState }: ConnectionsGameProps) {
         })}
       </div>
       <div className="flex flex-row space-x-2 py-4 justify-center">
-        <ControlButton onClick={handleClearSelection}>
-          Deselect All
-        </ControlButton>
-        <ControlButton
-          onClick={handleSubmit}
-          highlighted={numSelectedTiles === 4}
-        >
-          Submit
-        </ControlButton>
+        {gameWon && (
+          <ControlButton onClick={() => setShowModal(!showModal)}>
+            See Results
+          </ControlButton>
+        )}
+        {!gameWon && (
+          <ControlButton onClick={handleClearSelection}>
+            Deselect All
+          </ControlButton>
+        )}
+        {!gameWon && (
+          <ControlButton
+            onClick={handleSubmit}
+            highlighted={numSelectedTiles === 4}
+          >
+            Submit
+          </ControlButton>
+        )}
       </div>
+      <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
+        <h2 className="text-2xl font-bold mb-4">Congrats!</h2>
+        <Image src="/rach.png" alt="rach" height={500} width={200} />
+        <p className='max-w-2xl'>Rachel, the past year with you hgitas been lorem ipsumhas been lorem ipsum has been lorem ipsum has been lorem ipsum has been lorem ipsum  </p>
+        <button onClick={() => setShowModal(false)}>Close</button>
+      </Modal>
+      <Toast
+        message={toastMessage}
+        isVisible={toastMessage !== ''}
+        onClose={() => setToastMessage('')}
+      />
     </div>
   )
 }

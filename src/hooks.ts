@@ -8,6 +8,7 @@ export function useConnectionsGame(initialState: GameState) {
   const [incorrectGuess, setIncorrectGuess] = useState(false)
   const [isSelecting, setIsSelecting] = useState(false)
   const [pendingFoundGroup, setPendingFoundGroup] = useState<Group | null>(null)
+  const [toastMessage, setToastMessage] = useState('')
 
   // Shuffle all tiles once for display, but keep original state for game logic
   const shuffledTiles = useMemo(() => {
@@ -26,6 +27,8 @@ export function useConnectionsGame(initialState: GameState) {
 
   const numSelectedTiles = allWords.filter((tile) => tile.selected).length
 
+  const gameWon = allWords.length === 0
+
   const handleSubmit = async () => {
     const selectedGroup = state.groups.find((group) =>
       group.tiles.every((tile) => tile.selected),
@@ -36,6 +39,15 @@ export function useConnectionsGame(initialState: GameState) {
     setIsSelecting(false)
 
     if (!selectedGroup) {
+      // Check if "one away" (3 tiles from same group selected)
+      const oneAway = state.groups.some(
+        (group) => group.tiles.filter((tile) => tile.selected).length === 3,
+      )
+
+      if (oneAway) {
+        setToastMessage('One away...')
+      }
+
       setIncorrectGuess(true)
       await wait(1000)
       setIncorrectGuess(false)
@@ -68,6 +80,9 @@ export function useConnectionsGame(initialState: GameState) {
     incorrectGuess,
     isSelecting,
     pendingFoundGroup,
+    gameWon,
+    toastMessage,
+    setToastMessage,
     handleSubmit,
     handleToggleTile,
     handleClearSelection,

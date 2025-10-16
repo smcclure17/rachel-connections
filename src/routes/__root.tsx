@@ -52,6 +52,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         />
         <Scripts />
       </body>
+      <div className="hidden bg-red-400"></div>
     </html>
   )
 }

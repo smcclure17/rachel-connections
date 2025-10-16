@@ -24,7 +24,7 @@ export function TileButton({
       disabled={disabled}
       onClick={onClick}
       style={animateSelecting ? { animationDelay: `${delayMs}ms` } : undefined}
-      className={`border border-transparent aspect-square md:aspect-auto md:h-20 rounded-lg transition-colors font-bold flex items-center justify-center ${
+      className={`border border-transparent aspect-square md:aspect-auto md:h-20 rounded-lg transition-colors cursor-pointer font-bold flex items-center justify-center ${
         selected ? 'bg-[#5a594e] text-white' : 'bg-[#efefe6]'
       } ${animateIncorrect ? 'animate-shake opacity-80' : ''} ${animateSelecting ? 'animate-bounce-once' : ''}`}
     >
