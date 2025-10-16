@@ -31,7 +31,7 @@ export function ConnectionsGame({ initialState }: ConnectionsGameProps) {
     : allWords
 
   return (
-    <div className="space-y-4 p-24">
+    <div className="space-y-2 p-4 md:p-8 lg:p-12 max-w-2xl mx-auto">
       {state.foundGroups.length > 0 && (
         <div className="grid gap-2 grid-cols-1 text-center">
           {state.foundGroups.map((group) => (

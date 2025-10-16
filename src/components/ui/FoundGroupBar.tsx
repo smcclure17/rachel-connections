@@ -6,9 +6,9 @@ interface FoundGroupBarProps {
 
 export function FoundGroupBar({ title, color, words }: FoundGroupBarProps) {
   return (
-    <div className={`px-4 py-5 rounded bg-${color}`}>
+    <div className={`px-4 h-20 rounded bg-${color} flex flex-col items-center justify-center`}>
       <p className="font-bold">{title}</p>
-      <p className="">{words.join(', ')}</p>
+      <p className="text-sm">{words.join(', ')}</p>
     </div>
   )
 }

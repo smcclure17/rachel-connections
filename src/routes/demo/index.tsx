@@ -39,7 +39,7 @@ const initialState: GameState = {
         { word: 'slither', selected: false },
       ],
       found: false,
-      color: 'green-200',
+      color: 'gray-200',
       title: 'snakes',
     },
   ],
