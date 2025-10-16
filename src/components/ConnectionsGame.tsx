@@ -13,7 +13,6 @@ export function ConnectionsGame({ initialState }: ConnectionsGameProps) {
     state,
     allWords,
     numSelectedTiles,
-    selectedIndices,
     incorrectGuess,
     isSelecting,
     pendingFoundGroup,
@@ -29,6 +28,11 @@ export function ConnectionsGame({ initialState }: ConnectionsGameProps) {
         ...allWords.filter((tile) => !tile.selected),
       ]
     : allWords
+
+  // Calculate animation delay based on position in displayWords
+  const selectedIndices = displayWords
+    .map((tile, index) => (tile.selected ? index : -1))
+    .filter((index) => index !== -1)
 
   return (
     <div className="space-y-2 p-4 md:p-8 lg:p-12 max-w-2xl mx-auto">

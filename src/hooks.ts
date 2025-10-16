@@ -13,10 +13,6 @@ export function useConnectionsGame(initialState: GameState) {
   const allWords = state.groups.flatMap((group) => group.tiles)
   const numSelectedTiles = allWords.filter((tile) => tile.selected).length
 
-  const selectedIndices = allWords
-    .map((tile, index) => (tile.selected ? index : -1))
-    .filter((index) => index !== -1)
-
   const handleSubmit = async () => {
     const selectedGroup = state.groups.find((group) =>
       group.tiles.every((tile) => tile.selected),
@@ -40,6 +36,7 @@ export function useConnectionsGame(initialState: GameState) {
       await wait(500)
 
       dispatch({ type: 'SUBMIT' })
+      setPendingFoundGroup(null)
     }
   }
 
@@ -55,7 +52,6 @@ export function useConnectionsGame(initialState: GameState) {
     state,
     allWords,
     numSelectedTiles,
-    selectedIndices,
     incorrectGuess,
     isSelecting,
     pendingFoundGroup,
