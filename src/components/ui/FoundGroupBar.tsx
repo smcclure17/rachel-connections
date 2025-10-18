@@ -14,7 +14,7 @@ export function FoundGroupBar({ title, color, words }: FoundGroupBarProps) {
 
   return (
     <div
-      className={`px-4 h-28 md:h-20 rounded ${colorVariants[color]} flex flex-col items-center justify-center`}
+      className={`px-4 h-24 md:h-20 rounded ${colorVariants[color]} flex flex-col items-center justify-center`}
     >
       <p className="font-bold">{title}</p>
       <p className="text-sm">{words.join(', ')}</p>
