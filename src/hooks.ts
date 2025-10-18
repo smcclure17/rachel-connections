@@ -1,4 +1,4 @@
-import { useReducer, useState, useMemo } from 'react'
+import { useReducer, useState, useMemo, useLayoutEffect, useRef } from 'react'
 import { gameReducer } from '@/reducer'
 import { GameState, Group, WordTile } from '@/types'
 import { shuffle, wait } from './utils'
@@ -87,4 +87,57 @@ export function useConnectionsGame(initialState: GameState) {
     handleToggleTile,
     handleClearSelection,
   }
+}
+
+export function useFlipAnimation<T extends string>(
+  items: T[],
+  trigger: boolean,
+) {
+  const refs = useRef<Record<T, HTMLElement | null>>(
+    {} as Record<T, HTMLElement | null>,
+  )
+  const previousPositions = useRef<Record<T, DOMRect>>({} as Record<T, DOMRect>)
+
+  // Capture positions when NOT animating
+  useLayoutEffect(() => {
+    if (trigger) return
+
+    Object.keys(refs.current).forEach((key) => {
+      const el = refs.current[key as T]
+      if (el) {
+        previousPositions.current[key as T] = el.getBoundingClientRect()
+      }
+    })
+  })
+
+  // Run FLIP animation when triggered
+  useLayoutEffect(() => {
+    if (!trigger) return
+
+    const first = previousPositions.current
+
+    items.forEach((item) => {
+      const el = refs.current[item]
+      if (el && first[item]) {
+        const last = el.getBoundingClientRect()
+        const deltaX = first[item].left - last.left
+        const deltaY = first[item].top - last.top
+
+        el.style.transform = `translate(${deltaX}px, ${deltaY}px)`
+        el.style.transition = 'none'
+      }
+    })
+
+    requestAnimationFrame(() => {
+      items.forEach((item) => {
+        const el = refs.current[item]
+        if (el) {
+          el.style.transform = ''
+          el.style.transition = 'transform 0.4s ease-out'
+        }
+      })
+    })
+  }, [trigger, items])
+
+  return refs
 }

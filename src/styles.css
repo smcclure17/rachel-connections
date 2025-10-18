@@ -93,3 +93,20 @@ code {
 .animate-slide-down {
   animation: slide-down 0.3s ease-out;
 }
+
+/* Pop animation */
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-pop {
+  animation: pop 0.4s  ease-in-out
+}
