@@ -6,14 +6,16 @@ interface FoundGroupBarProps {
 
 export function FoundGroupBar({ title, color, words }: FoundGroupBarProps) {
   const colorVariants: any = {
-    yellow: "bg-yellow-200",
-    red: "bg-red-400",
-    green: "bg-green-200",
-    blue: "bg-blue-200"
-  };
+    yellow: 'bg-yellow-200',
+    red: 'bg-red-400',
+    green: 'bg-green-200',
+    blue: 'bg-blue-200',
+  }
 
   return (
-    <div className={`px-4 h-20 rounded ${colorVariants[color]} flex flex-col items-center justify-center`}>
+    <div
+      className={`px-4 h-28 md:h-20 rounded ${colorVariants[color]} flex flex-col items-center justify-center`}
+    >
       <p className="font-bold">{title}</p>
       <p className="text-sm">{words.join(', ')}</p>
     </div>
