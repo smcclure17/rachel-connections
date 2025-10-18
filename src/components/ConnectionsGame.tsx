@@ -8,6 +8,7 @@ import { Toast } from './ui/Toast'
 import { useEffect, useState } from 'react'
 import { wait } from '@/utils'
 import { Image } from '@unpic/react'
+import { ControlBar } from './ControlBar'
 
 export interface ConnectionsGameProps {
   initialState: GameState
@@ -79,7 +80,7 @@ export function ConnectionsGame({ initialState }: ConnectionsGameProps) {
           )
         })}
       </div>
-      <div className="flex flex-row space-x-2 py-4 justify-center">
+      <ControlBar>
         {gameWon && (
           <ControlButton onClick={() => setShowModal(!showModal)}>
             See Results
@@ -94,11 +95,12 @@ export function ConnectionsGame({ initialState }: ConnectionsGameProps) {
           <ControlButton
             onClick={handleSubmit}
             highlighted={numSelectedTiles === 4}
+            disabled={numSelectedTiles !== 4}
           >
             Submit
           </ControlButton>
         )}
-      </div>
+      </ControlBar>
       <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
         <h2 className="text-2xl font-bold mb-4">Congrats!</h2>
         <Image src="/rach.png" alt="rach" height={500} width={200} />

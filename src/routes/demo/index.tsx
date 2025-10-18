@@ -17,7 +17,7 @@ const initialState: GameState = {
         { word: 'rawr', selected: false },
       ],
       found: false,
-      color: 'blue-200',
+      color: 'blue',
       title: 'cats',
     },
     {
@@ -28,7 +28,7 @@ const initialState: GameState = {
         { word: 'stalking', selected: false },
       ],
       found: false,
-      color: 'yellow-200',
+      color: 'yellow',
       title: 'iconic dates',
     },
     {
@@ -39,7 +39,7 @@ const initialState: GameState = {
         { word: 'almost park', selected: false },
       ],
       found: false,
-      color: 'gray-200',
+      color: 'green',
       title: 'places we have banged',
     },
     {
@@ -50,7 +50,7 @@ const initialState: GameState = {
         { word: 'Rachel', selected: false },
       ],
       found: false,
-      color: 'red-400',
+      color: 'red',
       title: 'how i feel about you',
     },
   ],

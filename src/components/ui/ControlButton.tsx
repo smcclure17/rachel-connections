@@ -11,12 +11,14 @@ export function ControlButton({
   highlighted = false,
   disabled = false,
 }: ControlButtonProps) {
-  const style = highlighted ? 'text-white bg-black' : ''
+  const style = highlighted
+    ? 'text-white bg-black border-black'
+    : 'border-black'
   return (
     <button
       onClick={onClick}
       disabled={disabled}
-      className={`px-4 py-2 border rounded-4xl cursor-pointer font-semibold ${style}`}
+      className={`px-4 py-2 border rounded-4xl text-lg cursor-pointer font-semibold ${style} disabled:cursor-default`}
     >
       {children}
     </button>
