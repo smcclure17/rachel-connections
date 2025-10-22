@@ -110,3 +110,18 @@ code {
 .animate-pop {
   animation: pop 0.4s  ease-in-out
 }
+
+@font-face {
+  font-family: "Connections";
+  src: url("/header-font.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --font-myfont: "Connections", serif;
+}
+
+.text-connections {
+  font-family: var(--font-myfont);
+}

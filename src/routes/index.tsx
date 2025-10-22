@@ -60,6 +60,11 @@ const initialState: GameState = {
 function IndexPage() {
   return (
     <div className="max-w-5xl mx-auto mt-24">
+      <h1 className="text-center flex flex-col">
+        <span className='text-sm text-black italic'>one year of</span>
+        <span className='text-connections text-3xl text-black'>Connection(s)</span>
+        <span>October 23, 2025</span>
+      </h1>
       <ConnectionsGame initialState={initialState} />
     </div>
   )

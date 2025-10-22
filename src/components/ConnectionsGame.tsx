@@ -110,14 +110,19 @@ export function ConnectionsGame({ initialState }: ConnectionsGameProps) {
         )}
       </ControlBar>
       <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
-        <h2 className="text-2xl font-bold mb-4">Congrats!</h2>
+        <h2 className="text-2xl font-bold text-red-900">Rachel {"<3"}</h2>
         <Image src="/rach.png" alt="rach" height={500} width={200} />
         <p className="max-w-2xl">
-          Rachel, the past year with you hgitas been lorem ipsumhas been lorem
-          ipsum has been lorem ipsum has been lorem ipsum has been lorem
-          ipsum{' '}
+          One year ago we set out to watch a (not-) rom-com; what a year it has been since :)
         </p>
-        <button onClick={() => setShowModal(false)}>Close</button>
+        <p>
+          At the time, I had no idea the woman i was letting into my life.
+        </p>
+        <p>
+          It has been such a whirlwind of fun, excitement, and growth
+        </p>
+        <p>Whether it's playing Minecraft, raving, watching HIMYM, or going on ridiculously long walks (our Strava's are goated)</p>
+        <button className="pt-10" onClick={() => setShowModal(false)}>Close</button>
       </Modal>
       <Toast
         message={toastMessage}
