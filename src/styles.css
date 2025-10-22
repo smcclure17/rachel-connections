@@ -19,7 +19,7 @@ code {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-15%);
+    transform: translateY(-10%);
   }
   100% {
     transform: translateY(0);
@@ -27,7 +27,7 @@ code {
 }
 
 .animate-bounce-once {
-  animation: bounce-once 0.25s ease-in-out;
+  animation: bounce-once 0.3s ease-in-out;
 }
 
 @keyframes shake {
