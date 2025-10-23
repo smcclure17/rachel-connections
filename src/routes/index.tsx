@@ -23,8 +23,8 @@ const initialState: GameState = {
     {
       tiles: [
         { word: 'MFA', selected: false },
-        { word: 'Wusong', selected: false },
-        { word: 'Clay', selected: false },
+        { word: 'Wusong road', selected: false },
+        { word: 'Claydate', selected: false },
         { word: 'stalking', selected: false },
       ],
       found: false,

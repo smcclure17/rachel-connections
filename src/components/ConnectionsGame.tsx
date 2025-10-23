@@ -38,9 +38,9 @@ export function ConnectionsGame({ initialState }: ConnectionsGameProps) {
   // When rearranging, sort so selected tiles come first
   const displayWords = pendingFoundGroup
     ? [
-        ...allWords.filter((tile) => tile.selected),
-        ...allWords.filter((tile) => !tile.selected),
-      ]
+      ...allWords.filter((tile) => tile.selected),
+      ...allWords.filter((tile) => !tile.selected),
+    ]
     : allWords
 
   // Calculate animation delay based on position in displayWords
@@ -110,19 +110,24 @@ export function ConnectionsGame({ initialState }: ConnectionsGameProps) {
         )}
       </ControlBar>
       <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
-        <h2 className="text-2xl font-bold text-red-900">Rachel {"<3"}</h2>
-        <Image src="/rach.png" alt="rach" height={500} width={200} />
-        <p className="max-w-2xl">
-          One year ago we set out to watch a (not-) rom-com; what a year it has been since :)
-        </p>
-        <p>
-          At the time, I had no idea the woman i was letting into my life.
-        </p>
-        <p>
-          It has been such a whirlwind of fun, excitement, and growth
-        </p>
-        <p>Whether it's playing Minecraft, raving, watching HIMYM, or going on ridiculously long walks (our Strava's are goated)</p>
-        <button className="pt-10" onClick={() => setShowModal(false)}>Close</button>
+          <h2 className="text-2xl font-bold text-red-900">Rachel {"<3"}</h2>
+          <Image src="/rach.png" alt="rach" height={500} width={200} />
+        <div className='max-w-2xl flex flex-col space-y-4'>
+          <p>
+            One year ago we set out to watch a (not-) rom-com; what a year it has been since :)
+          </p>
+          <p>
+            Whether it's playing Minecraft, raving, watching HIMYM, or going on ridiculously long walks
+            (our Strava's are goated) each day is a special moment I cherish DEEPLY.
+          </p>
+          <p>
+            Thanks for putting up with my vocal stims, messy apartment, <span className='line-through'>incredibly hilarious </span> bad jokes, etc…,
+            and welcoming me into your world.
+          </p>
+          <p>I am so glad to have met you and so lucky to have you in my life. I love the way I feel when I'm with you and that feeling is good.</p>
+          <p>I love you, Rachel {">:)"} {"<3"}</p>
+          <button className="pt-10" onClick={() => setShowModal(false)}>Close</button>
+        </div>
       </Modal>
       <Toast
         message={toastMessage}
