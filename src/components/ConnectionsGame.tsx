@@ -118,7 +118,7 @@ export function ConnectionsGame({ initialState }: ConnectionsGameProps) {
           </p>
           <p>
             Whether it's playing Minecraft, raving, watching HIMYM, or going on ridiculously long walks
-            (our Strava's are goated) each day is a special moment I cherish DEEPLY.
+            (our Stravas are goated) each day is a special moment I cherish DEEPLY.
           </p>
           <p>
             Thanks for putting up with my vocal stims, messy apartment, <span className='line-through'>incredibly hilarious </span> bad jokes, etc…,
