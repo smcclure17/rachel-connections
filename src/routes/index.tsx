@@ -40,7 +40,7 @@ const initialState: GameState = {
       ],
       found: false,
       color: 'green',
-      title: 'places we have banged',
+      title: 'places we have held hands',
     },
     {
       tiles: [
